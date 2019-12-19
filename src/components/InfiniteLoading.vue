@@ -143,7 +143,9 @@ export default {
   },
   mounted() {
     this.$watch('forceUseInfiniteWrapper', () => {
-      this.scrollParent = this.getScrollParent();
+      setTimeout(() => {
+        this.scrollParent = this.getScrollParent();
+      }, 500);
     }, { immediate: true });
 
     this.scrollHandler = (ev) => {
@@ -159,7 +161,7 @@ export default {
     setTimeout(() => {
       this.scrollHandler();
       this.scrollParent.addEventListener('scroll', this.scrollHandler, evt3rdArg);
-    }, 1);
+    }, 1000);
 
     this.$on('$InfiniteLoading:loaded', (ev) => {
       this.isFirstLoad = false;
@@ -315,9 +317,9 @@ export default {
     getScrollParent(elm = this.$el) {
       let result;
       // new code
-      if (!elm) {
-        return this.getScrollParent();
-      }
+      // if (!elm) {
+      //   return this.getScrollParent();
+      // }
       // new code
       if (typeof this.forceUseInfiniteWrapper === 'string') {
         result = elm.querySelector(this.forceUseInfiniteWrapper);
