@@ -117,7 +117,9 @@ export function kebabCase(str) {
  * @return  {Boolean}
  */
 export function isVisible(elm) {
-  return (elm.offsetWidth + elm.offsetHeight) > 0;
+  if (elm) {
+    return (elm.offsetWidth + elm.offsetHeight) > 0;
+  } return false;
 }
 
 export default {
